@@ -8,14 +8,23 @@
       "es2022",
     ],
     "paths": {
-      "@home/*": [
-        "*"
+      "@app/*": [
+        "src/*"
+      ],
+      "@plugin": [
+        "src/main"
+      ],
+      "@utils/*": [
+        "src/utils/*"
       ],
       "@interfaces/*": [
         "src/interfaces/*"
       ],
       "@components/*": [
         "src/ui/components/*"
+      ],
+      "@modals/*": [
+        "src/ui/modals/*"
       ],
     },
     "importHelpers": true,

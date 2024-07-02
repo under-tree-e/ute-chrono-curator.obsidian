@@ -1,4 +1,4 @@
-export const defaultSettings: CCSettings = {
+export const defaultSettings: Settings = {
     language: "en-EN",
     timestampFormat: "YY-MM-DD HH:mm:ss",
     userTimestampFormat: "YYYY-MM-DD HH:mm:ss",
@@ -14,7 +14,7 @@ export const defaultSettings: CCSettings = {
     insertAfterLine: "",
 };
 
-export interface CCSettings {
+export interface Settings {
     language: string;
     timestampFormat: string;
     userTimestampFormat: string;

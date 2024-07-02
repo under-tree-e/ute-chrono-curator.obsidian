@@ -1,10 +1,10 @@
 import { Plugin } from "obsidian";
 import { Dashboard } from "@components/dashboard/dashboard";
-import { SettingsTab } from "./config/settings-tab";
-import { CCSettings } from "@interfaces/settings";
+import { SettingsTab } from "./ui/components/settings/settings-tab";
+import { Settings } from "@interfaces/settings";
 
 export default class CronoCuratorPlugin extends Plugin {
-    public settings: CCSettings = {} as CCSettings;
+    public settings: Settings = {} as Settings;
 
     private ds: Dashboard = new Dashboard();
 

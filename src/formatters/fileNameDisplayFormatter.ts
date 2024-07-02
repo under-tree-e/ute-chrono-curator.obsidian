@@ -1,6 +1,6 @@
 import { Formatter } from "./formatter";
 import type { App } from "obsidian";
-// import { getNaturalLanguageDates } from "../utilityObsidian";
+import { getNaturalLanguageDates } from "../utilityObsidian";
 
 export class FileNameDisplayFormatter extends Formatter {
     constructor(private app: App) {
@@ -33,8 +33,7 @@ export class FileNameDisplayFormatter extends Formatter {
     }
 
     protected getNaturalLanguageDates() {
-        return this.app.plugins.plugins["nldates-obsidian"];
-        // return getNaturalLanguageDates(this.app);
+        return getNaturalLanguageDates(this.app);
     }
 
     protected suggestForValue(suggestedValues: string[]) {
