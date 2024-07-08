@@ -1,7 +1,7 @@
 {
   "name": "ute-chrono-curator.obsidian",
   "title": "UTE Chrono Curator",
-  "version": "0.0.2-dev.0",
+  "version": "0.0.2-dev.2",
   "description": "UTE Chrono Curator - time tracker & organization module for Obsidian application",
   "author": {
     "name": "Under Tree Entertainment",
@@ -45,13 +45,13 @@
   },
   "dependencies": {
     "chart.js": "^4.4.3",
-    "obsidian": "^1.5.7-1",
     "svelte": "^4.2.18"
   },
   "devDependencies": {
     "bestzip": "^2.2.1",
     "clear-folder": "^5.0.0",
     "npm-check-updates": "^16.14.14",
+    "obsidian": "^1.5.7-1",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "tsconfig-paths-webpack-plugin": "^4.1.0",
