@@ -13,4 +13,5 @@ electron
 Thumbs.db
 .env
 deviceId
-config.json
+./config.json
+assets/config.json

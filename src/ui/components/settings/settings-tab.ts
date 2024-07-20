@@ -1,7 +1,8 @@
 import { App, PluginSettingTab, Setting } from "obsidian";
-import CronoCuratorPlugin from "@plugin";
+import CronoCuratorPlugin from "@app/index";
 import { defaultSettings } from "@interfaces/settings";
-// import { FileNameDisplayFormatter } from "../formatters/fileNameDisplayFormatter";
+import { FileNameFormatter } from "@utils/fileNameFormater";
+import moment from "moment";
 
 export class SettingsTab extends PluginSettingTab {
     private plugin: CronoCuratorPlugin;
@@ -12,8 +13,8 @@ export class SettingsTab extends PluginSettingTab {
         this.plugin = plugin;
     }
 
-    display(): void {
-        // const displayFormatter: FileNameDisplayFormatter = new FileNameDisplayFormatter(this.app);
+    public display() {
+        const displayFormatter: FileNameFormatter = new FileNameFormatter();
 
         this.containerEl.empty();
         this.containerEl.createEl("h2", { text: "Crono Curator Settings" });

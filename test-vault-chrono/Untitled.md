@@ -1,3 +1,3 @@
-```crono-curator
+```cc-tracker
 
 ```

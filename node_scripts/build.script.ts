@@ -1,6 +1,6 @@
 import fs from "fs";
 import packageJson from "../package.json";
-import packageProject from "../projects/ute-chrono-curator.obsidian/package.json";
+import packageProject from "../package.json";
 import path from "path";
 
 export default class BuildScript {
@@ -16,11 +16,11 @@ export default class BuildScript {
             packageProject.keywords = packageJson.keywords;
             packageProject.license = packageJson.license;
             let configString: string = JSON.stringify(packageProject, null, 2);
-            fs.writeFileSync(path.resolve(`projects/ute-chrono-curator.obsidian/package.json`), configString);
+            fs.writeFileSync(path.resolve(`package.json`), configString);
 
             console.log("Building app...");
 
-            await this.command("ng", ["build"]);
+            await this.command("webpack");
 
             console.log("Packing app...");
 

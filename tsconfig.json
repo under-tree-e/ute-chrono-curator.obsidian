@@ -11,9 +11,6 @@
       "@app/*": [
         "src/*"
       ],
-      "@plugin": [
-        "src/main"
-      ],
       "@utils/*": [
         "src/utils/*"
       ],
@@ -45,5 +42,8 @@
     "compilerOptions": {
       "module": "commonjs"
     }
-  }
+  },
+  "exclude": [
+    "node_scripts"
+  ]
 }
