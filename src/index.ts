@@ -1,71 +1,53 @@
 import { Plugin } from "obsidian";
-// import { Dashboard } from "@components/dashboard/dashboard";
 import { SettingsTab } from "./ui/components/settings/settings-tab";
-import { Settings } from "@interfaces/settings";
+import { defaultSettings, Settings } from "@interfaces/settings";
 
 export default class CronoCuratorPlugin extends Plugin {
     public settings: Settings = {} as Settings;
 
-    // private ds: Dashboard = new Dashboard();
-
-    // private cache: Cache | undefined;
-    // public inlineRenderer: InlineRenderer | undefined;
-    // public queryRenderer: QueryRenderer | undefined;
-
     public async onload() {
         await this.loadSettings();
-
         this.addSettingTab(new SettingsTab(this));
 
-        // initializeFile({
-        //     metadataCache: this.app.metadataCache,
-        //     vault: this.app.vault,
-        //     workspace: this.app.workspace,
-        // });
-
         // this.registerMarkdownCodeBlockProcessor("cc-tracker", (s, e, i) => {
-        //     this.ds.init(s);
+        //     e.empty();
+        //     let component = new MarkdownRenderChild(e)
+        //     let tracker = loadTracker(s);
+
+        //     // Initial file name
+        //     let filePath = i.sourcePath;
+
+        //     // Getter passed to displayTracker since the file name can change
+        //     const getFile = () => filePath;
+
+        //     // Hook rename events to update the file path
+        //     const renameEventRef = this.app.vault.on("rename", (file, oldPath) => {
+        //         if (file instanceof TFile && oldPath === filePath) {
+        //             filePath = file.path;
+        //         }
+        //     })
+
+        //     // Register the event to remove on unload
+        //     component.registerEvent(renameEventRef);
+
+        //     displayTracker(this.app, tracker, e, getFile, () => i.getSectionInfo(e), this.settings, component);
+        //     i.addChild(component)
         // });
 
-        // const events = new TasksEvents({ obsidianEvents: this.app.workspace });
-        // this.cache = new Cache({
-        //     metadataCache: this.app.metadataCache,
-        //     vault: this.app.vault,
-        //     events,
-        // });
-        // this.inlineRenderer = new InlineRenderer({ plugin: this });
-        // this.queryRenderer = new QueryRenderer({ plugin: this, events });
-
-        // this.registerEditorExtension(newLivePreviewExtension());
-        // this.registerEditorSuggest(new EditorSuggestor(this.app, getSettings(), this));
-        // new Commands({ plugin: this });
+        this.addCommand({
+            id: `insert`,
+            name: `Insert CC Tracker`,
+            editorCallback: (e, _) => {
+                e.replaceSelection("```cc-tracker\n```\n");
+            },
+        });
     }
 
-    // onunload() {
-    //     console.log('info', `unloading plugin "${this.manifest.name}" v${this.manifest.version}`);
-    //     this.cache?.unload();
-    // }
-
     async loadSettings() {
-        let newSettings = await this.loadData();
-        // updateSettings(newSettings);
-        // Fetch the updated settings, in case the user has not yet edited the settings,
-        // in which case newSettings is currently empty.
-        // newSettings = getSettings();
-        // GlobalFilter.getInstance().set(newSettings.globalFilter);
-        // GlobalFilter.getInstance().setRemoveGlobalFilter(newSettings.removeGlobalFilter);
-        // GlobalQuery.getInstance().set(newSettings.globalQuery);
+        this.settings = Object.assign({}, defaultSettings, await this.loadData());
     }
 
     async saveSettings() {
-        // await this.saveData(getSettings());
+        await this.saveData(this.settings);
     }
-
-    // public getTrackers(): Tracker[] {
-    //     if (this.cache === undefined) {
-    //         return [] as Tracker[];
-    //     } else {
-    //         return this.cache.getTrackers();
-    //     }
-    // }
 }

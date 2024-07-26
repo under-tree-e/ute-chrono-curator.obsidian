@@ -11,6 +11,9 @@
       "@app/*": [
         "src/*"
       ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
       "@utils/*": [
         "src/utils/*"
       ],

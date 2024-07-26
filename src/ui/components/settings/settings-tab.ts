@@ -3,33 +3,31 @@ import CronoCuratorPlugin from "@app/index";
 import { defaultSettings } from "@interfaces/settings";
 import { FileNameFormatter } from "@utils/fileNameFormater";
 import moment from "moment";
+import fs from "fs";
+import path, { join } from "path";
+import en from "@assets/locales/en.json";
 
 export class SettingsTab extends PluginSettingTab {
     private plugin: CronoCuratorPlugin;
-    // private filePath: string;
+    private filePath: string = "";
 
     constructor(plugin: CronoCuratorPlugin) {
         super(plugin.app, plugin);
         this.plugin = plugin;
     }
 
-    public display() {
+    public async display() {
         const displayFormatter: FileNameFormatter = new FileNameFormatter();
+        this.filePath = await displayFormatter.format(this.plugin.settings.fileName);
+
+        const locale = fs.readFileSync(join(`../../../assets/locales/${moment.locale()}.json`));
 
         this.containerEl.empty();
         this.containerEl.createEl("h2", { text: "Crono Curator Settings" });
 
-        new Setting(this.containerEl)
-            .setName("Interface Language")
-            .setDesc("")
-            .addDropdown((dropDown: any) => {
-                dropDown.addOption("en-EN", "English");
-                dropDown.addOption("uk-UA", "Українська");
-                dropDown.onChange(async (value: string) => {
-                    this.plugin.settings.language = value;
-                    await this.plugin.saveSettings();
-                });
-            });
+        console.log(moment.locale());
+        console.log(en);
+        console.log(locale);
 
         new Setting(this.containerEl)
             .setName("Timestamp Display Format")
@@ -92,13 +90,16 @@ export class SettingsTab extends PluginSettingTab {
                 });
             });
 
-        new Setting(this.containerEl)
-            .setName(`File name: ${displayFormatter.format(this.plugin.settings.fileName)}`)
-            .setDesc("Name or path to file to insert new time trackers.")
+        const fileNameSetting: Setting = new Setting(this.containerEl)
+            .setName(`File name: ${this.filePath}`)
+            .setDesc("Name or path to file to insert new time trackers. Allowed format syntax: '/folder/{{DATE(YYYY-DDD)}}'")
             .addText((t) => {
                 t.setValue(this.plugin.settings.fileName);
                 t.onChange(async (v) => {
                     this.plugin.settings.fileName = v;
+                    this.filePath = await displayFormatter.format(v);
+                    fileNameSetting.setName(`File name: ${this.filePath}`);
+
                     await this.plugin.saveSettings();
                 });
             });

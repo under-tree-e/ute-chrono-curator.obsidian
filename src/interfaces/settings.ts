@@ -1,5 +1,4 @@
 export const defaultSettings: Settings = {
-    language: "en-EN",
     timestampFormat: "YY-MM-DD HH:mm:ss",
     userTimestampFormat: "YYYY-MM-DD HH:mm:ss",
     csvDelimiter: ",",
@@ -15,7 +14,6 @@ export const defaultSettings: Settings = {
 };
 
 export interface Settings {
-    language: string;
     timestampFormat: string;
     userTimestampFormat: string;
     csvDelimiter: string;
