@@ -3,9 +3,6 @@ import CronoCuratorPlugin from "@app/index";
 import { defaultSettings } from "@interfaces/settings";
 import { FileNameFormatter } from "@utils/fileNameFormater";
 import moment from "moment";
-import fs from "fs";
-import path, { join } from "path";
-import en from "@assets/locales/en.json";
 
 export class SettingsTab extends PluginSettingTab {
     private plugin: CronoCuratorPlugin;
@@ -19,23 +16,18 @@ export class SettingsTab extends PluginSettingTab {
     public async display() {
         const displayFormatter: FileNameFormatter = new FileNameFormatter();
         this.filePath = await displayFormatter.format(this.plugin.settings.fileName);
-
-        const locale = fs.readFileSync(join(`../../../assets/locales/${moment.locale()}.json`));
+        const locale = require(`../../../assets/locales/${moment.locale()}.json`);
 
         this.containerEl.empty();
-        this.containerEl.createEl("h2", { text: "Crono Curator Settings" });
-
-        console.log(moment.locale());
-        console.log(en);
-        console.log(locale);
+        this.containerEl.createEl("h2", { text: locale.settings_title });
 
         new Setting(this.containerEl)
-            .setName("Timestamp Display Format")
+            .setName(locale.setttings_timestamp_format)
             .setDesc(
                 createFragment((f) => {
-                    f.createSpan({ text: "The way that timestamps in time tracker tables should be displayed. Uses " });
+                    f.createSpan({ text: locale.setttings_timestamp_format_text });
                     f.createEl("a", { text: "moment.js", href: "https://momentjs.com/docs/#/parsing/string-format/" });
-                    f.createSpan({ text: " syntax." });
+                    f.createSpan({ text: locale.setttings_timestamp_format_text_end });
                 })
             )
             .addText((t) => {
@@ -47,8 +39,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("CSV Delimiter")
-            .setDesc("The delimiter character that should be used when copying a tracker table as CSV. For example, some languages use a semicolon instead of a comma.")
+            .setName(locale.setttings_csvDelimiter)
+            .setDesc(locale.setttings_csvDelimiter_text)
             .addText((t) => {
                 t.setValue(String(this.plugin.settings.csvDelimiter));
                 t.onChange(async (v) => {
@@ -58,8 +50,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("Fine-Grained Durations")
-            .setDesc("Whether durations should include days, months and years. If this is disabled, additional time units will be displayed as part of the hours.")
+            .setName(locale.setttings_fineGrainedDurations)
+            .setDesc(locale.setttings_fineGrainedDurations_text)
             .addToggle((t) => {
                 t.setValue(this.plugin.settings.fineGrainedDurations);
                 t.onChange(async (v) => {
@@ -69,8 +61,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("Timestamp Durations")
-            .setDesc("Whether durations should be displayed in a timestamp format (12:15:01) rather than the default duration format (12h 15m 1s).")
+            .setName(locale.setttings_timestampDurations)
+            .setDesc(locale.setttings_timestampDurations_text)
             .addToggle((t) => {
                 t.setValue(this.plugin.settings.timestampDurations);
                 t.onChange(async (v) => {
@@ -80,8 +72,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("Display Segments in Reverse Order")
-            .setDesc("Whether older tracker segments should be displayed towards the bottom of the tracker, rather than the top.")
+            .setName(locale.setttings_reverseSegmentOrder)
+            .setDesc(locale.setttings_reverseSegmentOrder_text)
             .addToggle((t) => {
                 t.setValue(this.plugin.settings.reverseSegmentOrder);
                 t.onChange(async (v) => {
@@ -91,8 +83,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         const fileNameSetting: Setting = new Setting(this.containerEl)
-            .setName(`File name: ${this.filePath}`)
-            .setDesc("Name or path to file to insert new time trackers. Allowed format syntax: '/folder/{{DATE(YYYY-DDD)}}'")
+            .setName(`${locale.setttings_file}${this.filePath}`)
+            .setDesc(locale.setttings_fileName_text)
             .addText((t) => {
                 t.setValue(this.plugin.settings.fileName);
                 t.onChange(async (v) => {
@@ -105,7 +97,7 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("Create file if it doesnt't exist")
+            .setName(locale.setttings_createFile)
             .setDesc("")
             .addToggle((t) => {
                 t.setValue(this.plugin.settings.createFile);
@@ -116,8 +108,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("Write to bottom of file")
-            .setDesc("Put value at the bottom of the file - otherwise at the top")
+            .setName(locale.setttings_writeToBottom)
+            .setDesc(locale.setttings_writeToBottom_text)
             .addToggle((t) => {
                 t.setValue(this.plugin.settings.writeToBottom);
                 t.onChange(async (v) => {
@@ -127,8 +119,8 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         new Setting(this.containerEl)
-            .setName("Insert after")
-            .setDesc("Insert value after specified line. Accepts format syntax.")
+            .setName(locale.setttings_insertAfter)
+            .setDesc(locale.setttings_insertAfter_text)
             .addToggle((t) => {
                 t.setValue(this.plugin.settings.insertAfter);
                 t.onChange(async (v) => {

@@ -1,3 +1,21 @@
 {
-    "test": "tsetß"
+    "settings_title": "Crono Curator Settings",
+    "setttings_timestamp_format": "Timestamp Display Format",
+    "setttings_timestamp_format_text": "The way that timestamps in time tracker tables should be displayed. Uses ",
+    "setttings_timestamp_format_text_end": " syntax.",
+    "setttings_csvDelimiter": "CSV Delimiter",
+    "setttings_csvDelimiter_text": "The delimiter character that should be used when copying a tracker table as CSV. For example, some languages use a semicolon instead of a comma.",
+    "setttings_fineGrainedDurations": "Fine-Grained Durations",
+    "setttings_fineGrainedDurations_text": "Whether durations should include days, months and years. If this is disabled, additional time units will be displayed as part of the hours.",
+    "setttings_timestampDurations": "Timestamp Durations",
+    "setttings_timestampDurations_text": "Whether durations should be displayed in a timestamp format (12:15:01) rather than the default duration format (12h 15m 1s).",
+    "setttings_reverseSegmentOrder": "Display Segments in Reverse Order",
+    "setttings_reverseSegmentOrder_text": "Whether older tracker segments should be displayed towards the bottom of the tracker, rather than the top.",
+    "setttings_fileName": "File name: ",
+    "setttings_fileName_text": "Name or path to file to insert new time trackers. Allowed format syntax: '/folder/{{DATE(YYYY-DDD)}}'",
+    "setttings_createFile": "Create file if it doesnt't exist",
+    "setttings_writeToBottom": "Write to bottom of file",
+    "setttings_writeToBottom_text": "Put value at the bottom of the file - otherwise at the top",
+    "setttings_insertAfter": "Insert after",
+    "setttings_insertAfter_text": "Insert value after specified line. Accepts format syntax."
 }
