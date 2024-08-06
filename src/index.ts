@@ -22,7 +22,7 @@ export default class CronoCuratorPlugin extends Plugin {
             // console.log(ctx);
 
             // new DashboardUI({ props: { source: source }, target: el });
-            new DashboardUI();
+            new DashboardUI({ props: {}, target: el });
             // dashboard.init("test");
 
             //     e.empty();

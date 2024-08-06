@@ -27,7 +27,8 @@ const config: Configuration = {
                 loader: "ts-loader",
             },
             {
-                test: /\.(svelte)$/,
+                // test: /\.(svelte)$/,
+                test: /\.svelte$/,
                 use: [
                     {
                         loader: "svelte-loader",
@@ -59,7 +60,7 @@ const config: Configuration = {
     },
     resolve: {
         alias: {
-            svelte: path.resolve("node_modules", "svelte"),
+            svelte: path.resolve("node_modules", "svelte/src/runtime"),
             "~": path.resolve(__dirname, "src"),
         },
         extensions: [".ts", ".tsx", ".js", ".svelte"],
