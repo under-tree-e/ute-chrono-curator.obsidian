@@ -4,6 +4,8 @@
 // import { settingsStore } from "lib/util/stores";
 import { DashboardSettings } from "@interfaces/dashboard";
 
+export let source: string;
+
 export class Dashboard {
     public settings: DashboardSettings = {} as DashboardSettings;
     public title: string = "";
@@ -21,6 +23,10 @@ export class Dashboard {
     public duration_seconds: number = 0;
     public data: any[] = [];
     public selected: any = null;
+
+    constructor() {
+        console.log("json", "123");
+    }
 
     public init(json: string) {
         console.log("json", json);

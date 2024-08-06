@@ -1,6 +1,7 @@
-import { Plugin } from "obsidian";
+import { MarkdownPostProcessorContext, Plugin } from "obsidian";
 import { SettingsTab } from "./ui/components/settings/settings-tab";
 import { defaultSettings, Settings } from "@interfaces/settings";
+import DashboardUI from "./ui/components/dashboard/dashboard.svelte";
 
 export default class CronoCuratorPlugin extends Plugin {
     public settings: Settings = {} as Settings;
@@ -9,30 +10,44 @@ export default class CronoCuratorPlugin extends Plugin {
         await this.loadSettings();
         this.addSettingTab(new SettingsTab(this));
 
-        // this.registerMarkdownCodeBlockProcessor("cc-tracker", (s, e, i) => {
-        //     e.empty();
-        //     let component = new MarkdownRenderChild(e)
-        //     let tracker = loadTracker(s);
+        this.registerMarkdownCodeBlockProcessor("cc-tracker", (source: string, el: HTMLElement, ctx: MarkdownPostProcessorContext) => {
+            if (source.includes("DIRECT")) {
+            }
+            if (source.includes("REPORT")) {
+            }
+            if (source.includes("TRACKER")) {
+            }
+            // console.log(source);
+            // console.log(el);
+            // console.log(ctx);
 
-        //     // Initial file name
-        //     let filePath = i.sourcePath;
+            // new DashboardUI({ props: { source: source }, target: el });
+            new DashboardUI();
+            // dashboard.init("test");
 
-        //     // Getter passed to displayTracker since the file name can change
-        //     const getFile = () => filePath;
+            //     e.empty();
+            //     let component = new MarkdownRenderChild(e)
+            //     let tracker = loadTracker(s);
 
-        //     // Hook rename events to update the file path
-        //     const renameEventRef = this.app.vault.on("rename", (file, oldPath) => {
-        //         if (file instanceof TFile && oldPath === filePath) {
-        //             filePath = file.path;
-        //         }
-        //     })
+            //     // Initial file name
+            //     let filePath = i.sourcePath;
 
-        //     // Register the event to remove on unload
-        //     component.registerEvent(renameEventRef);
+            //     // Getter passed to displayTracker since the file name can change
+            //     const getFile = () => filePath;
 
-        //     displayTracker(this.app, tracker, e, getFile, () => i.getSectionInfo(e), this.settings, component);
-        //     i.addChild(component)
-        // });
+            //     // Hook rename events to update the file path
+            //     const renameEventRef = this.app.vault.on("rename", (file, oldPath) => {
+            //         if (file instanceof TFile && oldPath === filePath) {
+            //             filePath = file.path;
+            //         }
+            //     })
+
+            //     // Register the event to remove on unload
+            //     component.registerEvent(renameEventRef);
+
+            //     displayTracker(this.app, tracker, e, getFile, () => i.getSectionInfo(e), this.settings, component);
+            //     i.addChild(component)
+        });
 
         this.addCommand({
             id: `insert`,

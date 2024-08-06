@@ -6,7 +6,7 @@ export const defaultSettings: Settings = {
     reverseSegmentOrder: false,
     timestampDurations: false,
     insertToActive: true,
-    fileName: "",
+    fileName: "YYYY-MM",
     createFile: false,
     writeToBottom: true,
     insertAfter: false,

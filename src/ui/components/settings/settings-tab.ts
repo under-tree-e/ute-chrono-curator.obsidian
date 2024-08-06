@@ -83,14 +83,14 @@ export class SettingsTab extends PluginSettingTab {
             });
 
         const fileNameSetting: Setting = new Setting(this.containerEl)
-            .setName(`${locale.setttings_file}${this.filePath}`)
+            .setName(`${locale.setttings_fileName}${this.filePath}`)
             .setDesc(locale.setttings_fileName_text)
             .addText((t) => {
                 t.setValue(this.plugin.settings.fileName);
                 t.onChange(async (v) => {
                     this.plugin.settings.fileName = v;
                     this.filePath = await displayFormatter.format(v);
-                    fileNameSetting.setName(`File name: ${this.filePath}`);
+                    fileNameSetting.setName(`${locale.setttings_fileName}${this.filePath}`);
 
                     await this.plugin.saveSettings();
                 });

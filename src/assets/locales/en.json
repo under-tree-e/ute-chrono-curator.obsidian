@@ -1,5 +1,5 @@
 {
-    "settings_title": "Crono Curator Settings",
+    "settings_title": "Chrono Curator Settings",
     "setttings_timestamp_format": "Timestamp Display Format",
     "setttings_timestamp_format_text": "The way that timestamps in time tracker tables should be displayed. Uses ",
     "setttings_timestamp_format_text_end": " syntax.",

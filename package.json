@@ -1,7 +1,7 @@
 {
   "name": "ute-chrono-curator.obsidian",
   "title": "UTE Chrono Curator",
-  "version": "0.0.2-dev.5",
+  "version": "0.0.2-dev.6",
   "description": "UTE Chrono Curator - time tracker & organization module for Obsidian application",
   "author": {
     "name": "Under Tree Entertainment",
@@ -36,6 +36,7 @@
     "load": "npm i --force",
     "fix": "npm audit fix --force",
     "update": "ncu --upgrade && npm run install && npm run fix",
+    "rebuild": "npm rebuild",
     "----": "",
     "build": "npx ts-node node_scripts --build",
     "publish": "npx ts-node node_scripts --publish",
