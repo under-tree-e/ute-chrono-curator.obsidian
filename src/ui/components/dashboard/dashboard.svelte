@@ -1,11 +1,11 @@
 <script lang="ts">
   import { Dashboard } from "./dashboard";
-  import BarUI from "./charts/bar/bar.svelte";
+  import Bar from "./charts/bar/bar.svelte";
   import Donat from "./charts/donat/donat.svelte";
   import List from "./lists/list/list.svelte";
   import Detail from "./lists/detail/detail.svelte";
 
-  const ds: any = new Dashboard();
+  const ds = new Dashboard();
 </script>
 
 <h3 class="header">
@@ -16,7 +16,7 @@
 
 <div class="charts">
   <div class="bar">
-    <BarUI {...ds.data} />
+    <Bar {...ds.data} />
   </div>
 </div>
 

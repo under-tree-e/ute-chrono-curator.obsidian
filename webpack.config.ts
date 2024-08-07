@@ -27,16 +27,18 @@ const config: Configuration = {
                 loader: "ts-loader",
             },
             {
-                // test: /\.(svelte)$/,
+                test: /\.svelte\.ts$/,
+                use: ["ts-loader", "svelte-loader"],
+            },
+            {
                 test: /\.svelte$/,
-                use: [
-                    {
-                        loader: "svelte-loader",
-                        options: {
-                            preprocess: sveltePreprocess({}),
-                        },
-                    },
-                ],
+                use: "svelte-loader",
+            },
+            {
+                test: /node_modules\/svelte\/.*\.mjs$/,
+                resolve: {
+                    fullySpecified: false,
+                },
             },
             {
                 test: /\.node$/,

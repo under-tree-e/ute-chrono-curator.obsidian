@@ -1,7 +1,7 @@
 <script lang="ts">
   import { Donat } from "./donat";
 
-  const donat: any = new Donat();
+  const donat = new Donat();
 </script>
 
 <div class="chart-donat">
