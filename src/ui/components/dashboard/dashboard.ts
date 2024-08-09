@@ -25,6 +25,7 @@ export class Dashboard {
     public selected: any = null;
 
     constructor() {
+        this.data = ["111"];
         console.log("json", "123");
     }
 

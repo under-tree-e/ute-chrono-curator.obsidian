@@ -2,7 +2,7 @@ import path from "path";
 import { Configuration, IgnorePlugin, webpack } from "webpack";
 import "webpack-dev-server";
 import { TsconfigPathsPlugin } from "tsconfig-paths-webpack-plugin";
-import sveltePreprocess from "svelte-preprocess";
+import { sveltePreprocess } from "svelte-preprocess";
 import CopyWebpackPlugin from "copy-webpack-plugin";
 import dotenv from "dotenv";
 
@@ -30,9 +30,31 @@ const config: Configuration = {
                 test: /\.svelte\.ts$/,
                 use: ["ts-loader", "svelte-loader"],
             },
+            // {
+            //     test: /\.(svelte|svelte\.js)$/,
+            //     use: "svelte-loader",
+            // },
+            // {
+            //     test: /\.svelte$/,
+            //     use: {
+            //         loader: "svelte-loader",
+            //         options: {
+            //             preprocess: require("svelte-preprocess")(),
+            //         },
+            //     },
+            // },
             {
-                test: /\.svelte$/,
-                use: "svelte-loader",
+                test: /\.(svelte|svelte\.js)$/,
+                use: {
+                    loader: "svelte-loader",
+                    options: {
+                        preprocess: sveltePreprocess(),
+                        hotOptions: {
+                            acceptAccessors: true,
+                            acceptNamedExports: true,
+                        },
+                    },
+                },
             },
             {
                 test: /node_modules\/svelte\/.*\.mjs$/,
@@ -40,10 +62,10 @@ const config: Configuration = {
                     fullySpecified: false,
                 },
             },
-            {
-                test: /\.node$/,
-                use: "node-loader",
-            },
+            // {
+            //     test: /\.node$/,
+            //     use: "node-loader",
+            // },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
@@ -63,7 +85,7 @@ const config: Configuration = {
     resolve: {
         alias: {
             svelte: path.resolve("node_modules", "svelte/src/runtime"),
-            "~": path.resolve(__dirname, "src"),
+            // "~": path.resolve(__dirname, "src"),
         },
         extensions: [".ts", ".tsx", ".js", ".svelte"],
         mainFields: ["svelte", "browser", "module", "main"],

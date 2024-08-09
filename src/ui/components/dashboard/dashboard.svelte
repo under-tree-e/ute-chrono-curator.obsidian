@@ -1,11 +1,20 @@
 <script lang="ts">
   import { Dashboard } from "./dashboard";
+  const ds = new Dashboard();
+
+  let data = ["222"];
+
   import Bar from "./charts/bar/bar.svelte";
+  new Bar({
+    target: document.body,
+    // props: {
+    //   data: data,
+    // },
+  });
+
   import Donat from "./charts/donat/donat.svelte";
   import List from "./lists/list/list.svelte";
   import Detail from "./lists/detail/detail.svelte";
-
-  const ds = new Dashboard();
 </script>
 
 <h3 class="header">
@@ -16,16 +25,23 @@
 
 <div class="charts">
   <div class="bar">
-    <Bar {...ds.data} />
+    <!-- <Bar /> -->
+    <Bar {...data} />
   </div>
 </div>
 
 <div class="projects">
   <div class="lists">
-    <List class="list" {...ds.data} />
-    <Detail class="detail" {...ds.selected} />
+    <div class="list">
+      <!-- <List {...ds.data} /> -->
+    </div>
+    <div class="detail">
+      <!-- <Detail {...ds.selected} /> -->
+    </div>
   </div>
-  <Donat class="donat" {...ds.data} />
+  <div class="donat">
+    <!-- <Donat {...ds.data} /> -->
+  </div>
 </div>
 
 <style>

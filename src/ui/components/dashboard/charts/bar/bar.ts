@@ -1,5 +1,4 @@
-import { Chart, ChartConfiguration, ChartType } from "chart.js";
-import { onMount } from "svelte";
+import { Chart, ChartConfiguration, ChartType } from "chart.js/auto";
 
 export class Bar {
     private chartType: ChartType = "bar";
@@ -56,14 +55,25 @@ export class Bar {
         },
     };
 
-    public barChart: any = null;
+    private chart: Chart | null = null;
 
-    onMount() {
-        const ctx = this.barChart.getContext("2d");
-        const chart = new Chart(ctx, {
-            type: this.chartType,
-            data: this.chartData,
-            options: this.chartOptions,
-        });
+    constructor(private canvas: any) {}
+
+    public createChart() {
+        const ctx = this.canvas.getContext("2d");
+        if (ctx) {
+            this.chart = new Chart(ctx, {
+                type: this.chartType,
+                data: this.chartData,
+                options: this.chartOptions,
+            });
+        }
+    }
+
+    public destroyChart() {
+        if (this.chart) {
+            this.chart.destroy();
+            this.chart = null;
+        }
     }
 }

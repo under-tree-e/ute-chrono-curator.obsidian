@@ -5,33 +5,29 @@
     "outDir": "./dist/ute-chrono-curator.obsidian",
     "target": "es2022",
     "module": "esnext",
-    "types": [
-      "svelte",
-      "node"
-    ],
     "lib": [
       "es2022",
     ],
-    "paths": {
-      "@app/*": [
-        "src/*"
-      ],
-      "@assets/*": [
-        "src/assets/*"
-      ],
-      "@utils/*": [
-        "src/utils/*"
-      ],
-      "@interfaces/*": [
-        "src/interfaces/*"
-      ],
-      "@components/*": [
-        "src/ui/components/*"
-      ],
-      "@modals/*": [
-        "src/ui/modals/*"
-      ],
-    },
+    // "paths": {
+    //   "@app/*": [
+    //     "src/*"
+    //   ],
+    //   "@assets/*": [
+    //     "src/assets/*"
+    //   ],
+    //   "@utils/*": [
+    //     "src/utils/*"
+    //   ],
+    //   "@interfaces/*": [
+    //     "src/interfaces/*"
+    //   ],
+    //   "@components/*": [
+    //     "src/ui/components/*"
+    //   ],
+    //   "@modals/*": [
+    //     "src/ui/modals/*"
+    //   ],
+    // },
     "importHelpers": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
@@ -44,14 +40,14 @@
     "moduleResolution": "node",
     "verbatimModuleSyntax": false,
   },
-  "ts-node": {
-    "require": [
-      "tsconfig-paths/register"
-    ],
-    "compilerOptions": {
-      "module": "commonjs"
-    }
-  },
+  // "ts-node": {
+  //   "require": [
+  //     "tsconfig-paths/register"
+  //   ],
+  //   "compilerOptions": {
+  //     "module": "commonjs"
+  //   }
+  // },
   "exclude": [
     "node_scripts"
   ],

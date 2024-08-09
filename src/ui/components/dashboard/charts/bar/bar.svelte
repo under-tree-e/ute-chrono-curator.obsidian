@@ -1,10 +1,26 @@
 <script lang="ts">
-  // import { Bar } from "./bar";
+  export let data: any[] = [];
 
-  // const bar: any = new Bar();
+  import { onMount, onDestroy } from "svelte";
+  import { Bar } from "./bar";
+
+  let canvas: HTMLCanvasElement;
+  let bar: Bar;
+
+  onMount(() => {
+    bar = new Bar(canvas);
+    bar.createChart();
+  });
+
+  onDestroy(() => {
+    bar.destroyChart();
+  });
 </script>
 
 <div class="chart-bar">
-  BAR
-  <!-- <canvas bind:this={bar.barChart}></canvas> -->
+  <!-- BAR -->
+  {#each data as label}
+    <li>{label}</li>
+  {/each}
+  <canvas bind:this={canvas}></canvas>
 </div>
