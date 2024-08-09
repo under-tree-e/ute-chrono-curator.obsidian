@@ -2,7 +2,7 @@
   import { Dashboard } from "./dashboard";
   const ds = new Dashboard();
 
-  let data = ["222"];
+  let data = ["222"]; // not work
 
   import Bar from "./charts/bar/bar.svelte";
   new Bar({

@@ -19,6 +19,7 @@
 
 <div class="chart-bar">
   <!-- BAR -->
+  <!-- // not work -->
   {#each data as label}
     <li>{label}</li>
   {/each}
