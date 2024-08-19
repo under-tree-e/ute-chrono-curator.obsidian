@@ -2,15 +2,10 @@
   import { Dashboard } from "./dashboard";
   const ds = new Dashboard();
 
-  let data = ["222"]; // not work
-
   import Bar from "./charts/bar/bar.svelte";
-  new Bar({
-    target: document.body,
-    // props: {
-    //   data: data,
-    // },
-  });
+  console.log(102);
+
+  new Bar({ target: document.body });
 
   import Donat from "./charts/donat/donat.svelte";
   import List from "./lists/list/list.svelte";
@@ -26,7 +21,8 @@
 <div class="charts">
   <div class="bar">
     <!-- <Bar /> -->
-    <Bar {...data} />
+    <Bar bind:update={ds.updateCharts} />
+    <!-- <Bar bind:bar.setData()={ds.data} /> -->
   </div>
 </div>
 
