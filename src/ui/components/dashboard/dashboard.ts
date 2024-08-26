@@ -3,9 +3,6 @@
 // import { CurrentTimer } from "lib/stores/currentTimer";
 // import { settingsStore } from "lib/util/stores";
 import { DashboardSettings } from "@interfaces/dashboard";
-import { Bar } from "./charts/bar/bar";
-
-// export let source: string;
 
 export class Dashboard {
     public bar: any;
@@ -25,32 +22,45 @@ export class Dashboard {
     public duration_seconds: number = 0;
     public data: any = {};
     public selected: any = null;
+    public list: any[] = [];
 
     constructor() {
-        console.log("json", "123");
         this.title = "Month";
         this.totalTime = "42h 35m 41s";
         this.data = {
-            labels: ["111", "222", "333", "444"],
-            datasets: [1, 5, 1.2, 8],
+            datasets: [
+                {
+                    data: [20, 10],
+                },
+            ],
+            labels: ["a", "b"],
         };
-        console.log(222);
+        this.list = [
+            {
+                title: "test1",
+                duration: "10h 23m 53s",
+                percentage: 43,
+            },
+            {
+                title: "test2",
+                duration: "18h 23m 53s",
+                percentage: 57,
+            },
+        ];
 
         setTimeout(() => {
             this.updateCharts(this.data);
+            this.updateLists(this.list);
         }, 2000);
     }
 
     public init(json: string) {
-        console.log("json", json);
-
         // this.barList = computeList(DailySummary);
         // this.projectList = computeList(DailySummary, duration_seconds);
     }
 
-    public updateCharts(data: any) {
-        console.log(333);
-    }
+    public updateCharts(data: any) {}
+    public updateLists(data: any) {}
 
     // private computeList(summary: typeof DailySummary, current_timer_duration_seconds?: number) {
     //     if (current_timer_duration_seconds) {

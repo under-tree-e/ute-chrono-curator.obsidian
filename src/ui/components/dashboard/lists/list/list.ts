@@ -1,1 +1,14 @@
-export class List {}
+import moment from "moment";
+const locale = require(`../../../../../assets/locales/${moment.locale()}.json`);
+
+export class List {
+    public locale = locale; //optimise string to help
+    public items: { title: string; duration: string; percentage: number }[] = [];
+
+    public updateList(data: any[]) {
+        return data;
+    }
+    public openItem(item: any) {}
+    public expandeAll() {}
+    public expandeItem(item: any) {}
+}

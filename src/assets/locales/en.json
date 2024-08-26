@@ -17,5 +17,8 @@
     "setttings_writeToBottom": "Write to bottom of file",
     "setttings_writeToBottom_text": "Put value at the bottom of the file - otherwise at the top",
     "setttings_insertAfter": "Insert after",
-    "setttings_insertAfter_text": "Insert value after specified line. Accepts format syntax."
+    "setttings_insertAfter_text": "Insert value after specified line. Accepts format syntax.",
+    "title": "Title",
+    "duration": "Duration",
+    "percentage": "Percentage"
 }

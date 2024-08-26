@@ -3,12 +3,12 @@
   const ds = new Dashboard();
 
   import Bar from "./charts/bar/bar.svelte";
-  console.log(102);
-
   new Bar({ target: document.body });
 
-  import Donat from "./charts/donat/donat.svelte";
   import List from "./lists/list/list.svelte";
+  new List({ target: document.body });
+
+  import Donat from "./charts/donat/donat.svelte";
   import Detail from "./lists/detail/detail.svelte";
 </script>
 
@@ -20,16 +20,14 @@
 
 <div class="charts">
   <div class="bar">
-    <!-- <Bar /> -->
     <Bar bind:update={ds.updateCharts} />
-    <!-- <Bar bind:bar.setData()={ds.data} /> -->
   </div>
 </div>
 
 <div class="projects">
   <div class="lists">
     <div class="list">
-      <!-- <List {...ds.data} /> -->
+      <List bind:update={ds.updateLists} />
     </div>
     <div class="detail">
       <!-- <Detail {...ds.selected} /> -->

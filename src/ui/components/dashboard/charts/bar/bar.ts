@@ -1,11 +1,6 @@
 import { Chart, ChartConfiguration, ChartType } from "chart.js/auto";
 
 export class Bar {
-    private chartType: ChartType = "bar";
-    private chartData: ChartConfiguration["data"] = {
-        datasets: [],
-        labels: [],
-    };
     private chartOptions: ChartConfiguration["options"] = {
         elements: {
             line: {
@@ -54,60 +49,32 @@ export class Bar {
             },
         },
     };
+    private chart: Chart = {} as Chart;
 
-    // private chart: Chart;
-    // public canvas: any;
+    constructor(private canvas: any) {}
 
-    constructor(private canvas: any) {
-        // constructor() {
-        console.log(101);
-    }
-
-    // public update(data: any) {
-    //     this.chartData = data;
-    //     this.createChart();
-    // }
-
-    public createChart(data?: any): Chart {
-        console.log(111);
-        console.log(data);
-        console.log(this.canvas);
-
-        if (data) this.chartData = data;
-        // try{
+    public createChart(): Chart {
         const ctx = this.canvas.getContext("2d");
-        // if (ctx) {
-        const chart = new Chart(ctx, {
-            type: this.chartType,
-            data: this.chartData,
+        this.chart = new Chart(ctx, {
+            type: "bar",
+            data: {
+                datasets: [],
+                labels: [],
+            },
             options: this.chartOptions,
         });
 
-        chart.
-        // }
-        console.log(chart);
-        chart.update();
-        console.log("UPD");
-
-        // }catch(error){
-        //     console.error(error);
-
-        // }
-
-        return chart;
+        return this.chart;
     }
 
     public updateChart(chart: Chart, data?: any) {
-        if (data) this.chartData = data;
-        console.log(chart);
-
+        chart.data = data;
         chart?.update();
     }
 
     public destroyChart() {
-        // if (this.chart) {
-        //     this.chart.destroy();
-        //     this.chart = null;
-        // }
+        if (this.chart) {
+            this.chart.destroy();
+        }
     }
 }
