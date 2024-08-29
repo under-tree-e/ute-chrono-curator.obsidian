@@ -49,8 +49,9 @@ export class Dashboard {
         ];
 
         setTimeout(() => {
-            this.updateCharts(this.data);
-            this.updateLists(this.list);
+            this.updateBar(this.data);
+            this.updateDonat(this.data);
+            this.updateList(this.list);
         }, 2000);
     }
 
@@ -59,8 +60,9 @@ export class Dashboard {
         // this.projectList = computeList(DailySummary, duration_seconds);
     }
 
-    public updateCharts(data: any) {}
-    public updateLists(data: any) {}
+    public updateBar(data: any) {}
+    public updateDonat(data: any) {}
+    public updateList(data: any) {}
 
     // private computeList(summary: typeof DailySummary, current_timer_duration_seconds?: number) {
     //     if (current_timer_duration_seconds) {

@@ -1,4 +1,4 @@
-import { Chart, ChartConfiguration, ChartType } from "chart.js/auto";
+import { Chart, ChartConfiguration } from "chart.js/auto";
 
 export class Bar {
     private chartOptions: ChartConfiguration["options"] = {

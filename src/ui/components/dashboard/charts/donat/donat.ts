@@ -1,12 +1,6 @@
-import { Chart, ChartConfiguration, ChartType } from "chart.js";
-import { onMount } from "svelte";
+import { Chart, ChartConfiguration } from "chart.js";
 
 export class Donat {
-    private chartType: ChartType = "doughnut";
-    private chartData: ChartConfiguration["data"] = {
-        datasets: [],
-        labels: [],
-    };
     private chartOptions: ChartConfiguration["options"] = {
         elements: {
             line: {
@@ -55,15 +49,32 @@ export class Donat {
             },
         },
     };
+    private chart: Chart = {} as Chart;
 
-    public donatChart: any = null;
+    constructor(private canvas: any) {}
 
-    onMount() {
-        const ctx = this.donatChart.getContext("2d");
-        const chart = new Chart(ctx, {
-            type: this.chartType,
-            data: this.chartData,
+    public createChart(): Chart {
+        const ctx = this.canvas.getContext("2d");
+        this.chart = new Chart(ctx, {
+            type: "doughnut",
+            data: {
+                datasets: [],
+                labels: [],
+            },
             options: this.chartOptions,
         });
+
+        return this.chart;
+    }
+
+    public updateChart(chart: Chart, data?: any) {
+        chart.data = data;
+        chart?.update();
+    }
+
+    public destroyChart() {
+        if (this.chart) {
+            this.chart.destroy();
+        }
     }
 }

@@ -9,6 +9,8 @@
   new List({ target: document.body });
 
   import Donat from "./charts/donat/donat.svelte";
+  new Donat({ target: document.body });
+
   import Detail from "./lists/detail/detail.svelte";
 </script>
 
@@ -20,21 +22,21 @@
 
 <div class="charts">
   <div class="bar">
-    <Bar bind:update={ds.updateCharts} />
+    <Bar bind:update={ds.updateBar} />
   </div>
 </div>
 
 <div class="projects">
   <div class="lists">
     <div class="list">
-      <List bind:update={ds.updateLists} />
+      <List bind:update={ds.updateList} />
     </div>
     <div class="detail">
       <!-- <Detail {...ds.selected} /> -->
     </div>
   </div>
   <div class="donat">
-    <!-- <Donat {...ds.data} /> -->
+    <Donat bind:update={ds.updateDonat} />
   </div>
 </div>
 
