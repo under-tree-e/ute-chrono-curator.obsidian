@@ -44,6 +44,9 @@
       >
         {item.time}%
       </div>
+      {#if detail.dialog}
+        <div class="dialog-time">111</div>
+      {/if}
     </div>
   {/each}
 </div>

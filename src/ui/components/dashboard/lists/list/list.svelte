@@ -8,6 +8,10 @@
     items = list.updateList(data);
   };
 
+  export const state = () => {
+    return list.item;
+  };
+
   // onMount(() => {});
   // onDestroy(() => {});
 </script>

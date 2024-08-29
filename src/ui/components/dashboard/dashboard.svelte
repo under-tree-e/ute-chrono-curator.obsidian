@@ -12,6 +12,7 @@
   new Donat({ target: document.body });
 
   import Detail from "./lists/detail/detail.svelte";
+  new Detail({ target: document.body });
 </script>
 
 <h3 class="header">
@@ -25,15 +26,19 @@
     <Bar bind:update={ds.updateBar} />
   </div>
 </div>
+{ds.detail}
 
 <div class="projects">
   <div class="lists">
-    <div class="list">
-      <List bind:update={ds.updateList} />
-    </div>
-    <div class="detail">
-      <!-- <Detail {...ds.selected} /> -->
-    </div>
+    {#if !ds.detail}
+      <div class="list">
+        <List bind:update={ds.updateList} bind:state={ds.detail} />
+      </div>
+    {:else}
+      <div class="detail">
+        <Detail />
+      </div>
+    {/if}
   </div>
   <div class="donat">
     <Donat bind:update={ds.updateDonat} />

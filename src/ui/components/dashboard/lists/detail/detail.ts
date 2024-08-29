@@ -4,6 +4,7 @@ const locale = require(`../../../../../assets/locales/${moment.locale()}.json`);
 export class Detail {
     public locale = locale; //optimise string to help
     public items: { comment: string; tags: string; duration: string; time: string }[] = [];
+    public dialog: boolean = false;
 
     public updateList(data: any[]) {
         return data;
@@ -12,5 +13,7 @@ export class Detail {
     public expandeAll() {}
     public expandeItem(item: any) {}
     public changeComment(item: any) {}
-    public changeRange(item: any) {}
+    public changeRange(item: any) {
+        this.dialog = true;
+    }
 }
