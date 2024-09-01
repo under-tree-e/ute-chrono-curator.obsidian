@@ -1,16 +1,20 @@
 <script lang="ts">
   // import { onMount, onDestroy } from "svelte";
   import { List } from "./list";
-
   let list: List = new List();
+
   $: items = list.items;
   export const update = (data: any) => {
     items = list.updateList(data);
   };
 
-  export const state = () => {
-    return list.item;
-  };
+  $: item = list.item;
+  export let state;
+  state = item;
+
+  export let data;
+
+  // data = null;
 
   // onMount(() => {});
   // onDestroy(() => {});
@@ -22,20 +26,25 @@
   <div class="label">{list.locale.duration}</div>
   <div class="label">{list.locale.percentage}</div>
 </div>
+<button on:click={() => (data.state = data.state == "no" ? "yes" : "no")}>
+  {data.name || "---"}: {data.state || "==="}
+</button>
 <div class="content">
-  length: {items.length}
-  {#each items as item}
+  111 length: {items.length}
+  item: {item}
+  {#each items as record}
     <div
       class="item"
       role="button"
       tabindex="-1"
-      on:click={() => list.openItem(item)}
+      on:click={() => (item = list.openItem(record))}
       on:keydown={(e) => {}}
     >
-      <button on:click={() => list.expandeItem(item)}></button>
-      <div class="title">{item.title}</div>
-      <div class="title">{item.duration}</div>
-      <div class="title">{item.percentage}%</div>
+      <!-- on:click={() => (list.item = record)} -->
+      <button on:click={() => list.expandeItem(record)}></button>
+      <div class="title">{record.title}</div>
+      <div class="title">{record.duration}</div>
+      <div class="title">{record.percentage}%</div>
     </div>
   {/each}
 </div>

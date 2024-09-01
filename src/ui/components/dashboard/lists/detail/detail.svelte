@@ -20,7 +20,7 @@
   <div class="label">{detail.locale.time}</div>
 </div>
 <div class="content">
-  length: {items.length}
+  222 length: {items.length}
   {#each items as item}
     <div class="item">
       <button on:click={() => detail.expandeItem(item)}></button>

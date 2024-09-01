@@ -9,9 +9,12 @@ export class List {
     public updateList(data: any[]) {
         return data;
     }
-    public openItem(item: any) {
+    public openItem(record: any) {
         console.log("openItem");
-        this.item = item;
+        console.log(record);
+        // this.item = record;
+
+        return record;
     }
     public expandeAll() {}
     public expandeItem(item: any) {}
