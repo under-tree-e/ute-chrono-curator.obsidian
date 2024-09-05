@@ -30,19 +30,6 @@ const config: Configuration = {
                 test: /\.svelte\.ts$/,
                 use: ["ts-loader", "svelte-loader"],
             },
-            // {
-            //     test: /\.(svelte|svelte\.js)$/,
-            //     use: "svelte-loader",
-            // },
-            // {
-            //     test: /\.svelte$/,
-            //     use: {
-            //         loader: "svelte-loader",
-            //         options: {
-            //             preprocess: require("svelte-preprocess")(),
-            //         },
-            //     },
-            // },
             {
                 test: /\.(svelte|svelte\.js)$/,
                 use: {
@@ -62,10 +49,6 @@ const config: Configuration = {
                     fullySpecified: false,
                 },
             },
-            // {
-            //     test: /\.node$/,
-            //     use: "node-loader",
-            // },
             {
                 test: /\.s[ac]ss$/i,
                 use: [
@@ -85,7 +68,6 @@ const config: Configuration = {
     resolve: {
         alias: {
             svelte: path.resolve("node_modules", "svelte/src/runtime"),
-            // "~": path.resolve(__dirname, "src"),
         },
         extensions: [".ts", ".tsx", ".js", ".svelte"],
         mainFields: ["svelte", "browser", "module", "main"],

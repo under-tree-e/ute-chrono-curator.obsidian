@@ -10,10 +10,6 @@ export class List {
         return data;
     }
     public openItem(record: any) {
-        console.log("openItem");
-        console.log(record);
-        // this.item = record;
-
         return record;
     }
     public expandeAll() {}

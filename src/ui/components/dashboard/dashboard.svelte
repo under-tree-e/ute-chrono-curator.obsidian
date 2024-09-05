@@ -13,10 +13,6 @@
 
   import Detail from "./lists/detail/detail.svelte";
   new Detail({ target: document.body });
-
-  $: detail = ds.detail;
-
-  let data = { name: "math", state: "no" };
 </script>
 
 <h3 class="header">
@@ -25,21 +21,16 @@
   <span class="total-time">{ds.totalTime}</span>
 </h3>
 
-{JSON.stringify(data)}
-
 <div class="charts">
   <div class="bar">
     <Bar bind:update={ds.updateBar} />
   </div>
 </div>
-{ds.detailActive}
-{detail}
-
 <div class="projects">
   <div class="lists">
-    {#if !ds.detail}
+    {#if !ds.detail["title"]}
       <div class="list">
-        <List bind:update={ds.updateList} bind:state={detail} bind:data />
+        <List bind:update={ds.updateList} bind:selected={ds.detail} />
       </div>
     {:else}
       <div class="detail">
@@ -52,6 +43,6 @@
   </div>
 </div>
 
-<style>
+<style lang="scss">
   @import "./dashboard";
 </style>

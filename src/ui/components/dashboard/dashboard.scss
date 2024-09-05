@@ -1,17 +1,28 @@
-.header{
-  .title{}
-  .divider{}
-  .total-time{}
+.header {
+    .title {
+    }
+    .divider {
+    }
+    .total-time {
+    }
 }
 
-.charts{
-  .bar{}
+.charts {
+    .bar {
+    }
 }
 
-.projects{
-.lists{
-  .list{}
-  .detail{}
-}
-.donat{}
+.projects {
+    display: flex;
+    gap: 2rem;
+    .lists {
+        width: 100%;
+        .list {
+        }
+        .detail {
+        }
+    }
+    .donat {
+        width: 30rem;
+    }
 }

@@ -5,7 +5,7 @@
 import { DashboardSettings } from "@interfaces/dashboard";
 
 export class Dashboard {
-    public detail: any = null;
+    public detail: any = {};
     public detailActive: boolean = false;
     public bar: any;
     public settings: DashboardSettings = {} as DashboardSettings;
