@@ -3,7 +3,7 @@ const locale = require(`../../../../../assets/locales/${moment.locale()}.json`);
 
 export class List {
     public locale = locale; //optimise string to help
-    public items: { title: string; duration: string; percentage: number }[] = [];
+    public items: { title: string; tags: string; duration: string; percentage: number }[] = [];
     public item: any = null;
 
     public updateList(data: any[]) {
@@ -13,5 +13,8 @@ export class List {
         return record;
     }
     public expandeAll() {}
+    public startNew() {}
     public expandeItem(item: any) {}
+    public continueItem(item: any) {}
+    public changeTime(item: any) {}
 }

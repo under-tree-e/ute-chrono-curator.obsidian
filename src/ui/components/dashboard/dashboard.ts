@@ -32,7 +32,14 @@ export class Dashboard {
         this.data = {
             datasets: [
                 {
-                    data: [20, 10],
+                    label: "Dataset 1",
+                    data: 20,
+                    stack: "Stack 0",
+                },
+                {
+                    label: "Dataset 2",
+                    data: 10,
+                    stack: "Stack 0",
                 },
             ],
             labels: ["a", "b"],

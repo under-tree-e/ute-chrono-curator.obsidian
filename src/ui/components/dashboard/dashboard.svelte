@@ -15,31 +15,33 @@
   new Detail({ target: document.body });
 </script>
 
-<h3 class="header">
-  <span class="title">{ds.title}</span>
-  <span class="divider">•</span>
-  <span class="total-time">{ds.totalTime}</span>
-</h3>
+<div class="dashboard-section">
+  <h3 class="header">
+    <span class="title">{ds.title}</span>
+    <span class="divider">•</span>
+    <span class="total-time">{ds.totalTime}</span>
+  </h3>
 
-<div class="charts">
-  <div class="bar">
-    <Bar bind:update={ds.updateBar} />
+  <div class="charts">
+    <div class="bar">
+      <Bar bind:update={ds.updateBar} />
+    </div>
+    <div class="donat">
+      <Donat bind:update={ds.updateDonat} />
+    </div>
   </div>
-</div>
-<div class="projects">
-  <div class="lists">
-    {#if !ds.detail["title"]}
-      <div class="list">
-        <List bind:update={ds.updateList} bind:selected={ds.detail} />
-      </div>
-    {:else}
-      <div class="detail">
-        <Detail />
-      </div>
-    {/if}
-  </div>
-  <div class="donat">
-    <Donat bind:update={ds.updateDonat} />
+  <div class="projects">
+    <div class="lists">
+      {#if !ds.detail["title"]}
+        <div class="list">
+          <List bind:update={ds.updateList} bind:selected={ds.detail} />
+        </div>
+      {:else}
+        <div class="detail">
+          <Detail />
+        </div>
+      {/if}
+    </div>
   </div>
 </div>
 

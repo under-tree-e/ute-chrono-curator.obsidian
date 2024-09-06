@@ -1,7 +1,13 @@
 import { Chart, ChartConfiguration } from "chart.js";
 
 export class Donat {
-    private chartOptions: ChartConfiguration["options"] = {};
+    private chartOptions: ChartConfiguration["options"] = {
+        plugins: {
+            legend: {
+                display: false,
+            },
+        },
+    };
     private chart: Chart = {} as Chart;
 
     constructor(private canvas: any) {}

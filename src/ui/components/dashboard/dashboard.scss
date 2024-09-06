@@ -1,28 +1,40 @@
-.header {
-    .title {
-    }
-    .divider {
-    }
-    .total-time {
-    }
-}
-
-.charts {
-    .bar {
-    }
-}
-
-.projects {
+.dashboard-section {
     display: flex;
+    flex-direction: column;
     gap: 2rem;
-    .lists {
-        width: 100%;
-        .list {
+    .header {
+        .title {
         }
-        .detail {
+        .divider {
+        }
+        .total-time {
         }
     }
-    .donat {
-        width: 30rem;
+
+    .charts {
+        display: flex;
+        gap: 2rem;
+        .bar {
+            width: 100%;
+        }
+        .donat {
+            width: 15rem;
+            min-width: 15rem;
+        }
+    }
+
+    .projects {
+        .lists {
+            width: 100%;
+            > * {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            .list {
+            }
+            .detail {
+            }
+        }
     }
 }

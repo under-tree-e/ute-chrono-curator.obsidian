@@ -14,10 +14,12 @@
 </script>
 
 <div class="header">
-  <button on:click={() => list.expandeAll()}></button>
-  <div class="label">{list.locale.title}</div>
-  <div class="label">{list.locale.duration}</div>
-  <div class="label">{list.locale.percentage}</div>
+  <button class="sta" on:click={() => list.startNew()}></button>
+  <button class="exp" on:click={() => list.expandeAll()}></button>
+  <div class="tit">{list.locale.title}</div>
+  <div class="tag">{list.locale.tags}</div>
+  <div class="dur">{list.locale.duration}</div>
+  <div class="per">{list.locale.percentage}</div>
 </div>
 <div class="content">
   {#each items as record}
@@ -28,10 +30,20 @@
       on:click={() => (selected = list.openItem(record))}
       on:keydown={(e) => {}}
     >
-      <button on:click={() => list.expandeItem(record)}></button>
-      <div class="title">{record.title}</div>
-      <div class="title">{record.duration}</div>
-      <div class="title">{record.percentage}%</div>
+      <button class="sta" on:click={() => list.continueItem(record)}></button>
+      <button class="exp" on:click={() => list.expandeItem(record)}></button>
+      <div class="tit">{record.title}</div>
+      <div class="tag">{record.tags}</div>
+      <div
+        class="dur"
+        role="button"
+        tabindex="-1"
+        on:click={() => (selected = list.changeTime(record))}
+        on:keydown={(e) => {}}
+      >
+        {record.duration}
+      </div>
+      <div class="per">{record.percentage}%</div>
     </div>
   {/each}
 </div>

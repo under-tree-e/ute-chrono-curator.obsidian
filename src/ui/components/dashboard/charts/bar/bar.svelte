@@ -21,3 +21,7 @@
 <div class="chart-bar">
   <canvas bind:this={canvas}></canvas>
 </div>
+
+<style lang="scss">
+  @import "./bar";
+</style>

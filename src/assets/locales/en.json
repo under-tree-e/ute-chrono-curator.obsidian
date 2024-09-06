@@ -20,5 +20,6 @@
     "setttings_insertAfter_text": "Insert value after specified line. Accepts format syntax.",
     "title": "Title",
     "duration": "Duration",
-    "percentage": "Percentage"
+    "percentage": "Percentage",
+    "tags": "Tags"
 }
